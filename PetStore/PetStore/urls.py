@@ -22,7 +22,9 @@ from petApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.Index,name='index')
+    path('',views.Index,name='index'),
+    path('display/',views.Display, name='display'),
+    path('delete/<int:id>',views.Delete, name='delete')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
