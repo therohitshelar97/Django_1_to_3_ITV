@@ -24,7 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.Index,name='index'),
     path('display/',views.Display, name='display'),
-    path('delete/<int:id>',views.Delete, name='delete')
+    path('delete/<int:id>',views.Delete, name='delete'),
+    path('update/<int:id>',views.Update,name='update')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

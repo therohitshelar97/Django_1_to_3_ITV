@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from .models import Product
 from .forms import ProductForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -26,4 +27,19 @@ def Delete(request,id):
         ## print(id)
         os = Product.objects.get(pk=id)
         os.delete()
+        messages.success(request,"Data Deleted Succeessfully")
         return HttpResponseRedirect('/display/')
+
+def Update(request,id):
+    if request.method == "POST":
+        os = Product.objects.get(pk=id)
+        fm = ProductForm(request.POST, request.FILES, instance=os)
+        if fm.is_valid():
+            fm.save()
+            messages.success(request,"Data Updated Succesfully")
+            return HttpResponseRedirect('/display/')
+    else:
+        os = Product.objects.get(pk=id)
+        # print(os)
+        fm = ProductForm(instance=os)
+    return render(request, 'update.html',{'Updateform':fm})

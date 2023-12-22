@@ -12,6 +12,6 @@ class Product(models.Model):
     time = models.TimeField(auto_now=True, null=True)
     image = models.ImageField(upload_to='media',null=True)
 
-    def __str__(self):
-        return self.pname
+    # def __str__(self):
+    #     return self.pname
 
