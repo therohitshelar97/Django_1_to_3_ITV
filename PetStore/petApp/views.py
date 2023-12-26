@@ -43,3 +43,10 @@ def Update(request,id):
         # print(os)
         fm = ProductForm(instance=os)
     return render(request, 'update.html',{'Updateform':fm})
+
+def UserBase(request):
+    return render(request,'user/base.html')
+
+def UserIndex(request):
+    data = Product.objects.all()
+    return render(request,'user/index.html',{'data':data})
